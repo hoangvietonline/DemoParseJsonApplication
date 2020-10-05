@@ -1,0 +1,32 @@
+[
+    {
+        "id": "P1",
+        "isFood": false,
+        "isHotel": false,
+        "isPlace": true,
+        "latitude": 15.997702,
+        "longitude": 107.988069,
+        "rate": 4.5,
+        "title": "Bà Nà Hills"
+    },
+    {
+        "id": "P2",
+        "isFood": false,
+        "isHotel": false,
+        "isPlace": true,
+        "latitude": 16.038368,
+        "longitude": 108.226687,
+        "rate": 4.4,
+        "title": "Asia Park"
+    },
+    {
+        "id": "P3",
+        "isFood": false,
+        "isHotel": false,
+        "isPlace": true,
+        "latitude": 16.095519,
+        "longitude": 108.242913,
+        "rate": 4.3,
+        "title": "Bảo tàng 3D TrickEye"
+    }
+]
