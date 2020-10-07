@@ -13,4 +13,3 @@ class DetailsTravel {
     @Relation(parentColumn = "id", entityColumn = "travelId")
     var content: Content? = null
 }
-

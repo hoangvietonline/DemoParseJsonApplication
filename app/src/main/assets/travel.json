@@ -28,5 +28,15 @@
         "longitude": 108.242913,
         "rate": 4.3,
         "title": "Bảo tàng 3D TrickEye"
+    },
+    {
+        "id": "P4",
+        "isFood": false,
+        "isHotel": false,
+        "isPlace": true,
+        "latitude": 16.095519,
+        "longitude": 108.242913,
+        "rate": 4.3,
+        "title": "Chợ cồn"
     }
 ]

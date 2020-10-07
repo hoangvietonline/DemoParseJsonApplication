@@ -13,5 +13,6 @@ data class Travel(
     var latitude: Float,
     var rate: Float,
     var title: String,
-    var isFavourite : Boolean
+    var isFavourite: Boolean,
+    var address: String
 )

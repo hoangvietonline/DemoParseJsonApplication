@@ -1,6 +1,7 @@
 package com.hv.demoparsejsonapplication.database
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -20,12 +21,13 @@ import java.util.concurrent.Executors
 )
 abstract class AppDataBase : RoomDatabase() {
     abstract val travelDao: TravelDao
-    abstract val contentDao : ContentDao
-    abstract val imageDao : ImageTravelDao
+    abstract val contentDao: ContentDao
+    abstract val imageDao: ImageTravelDao
 
     companion object {
-        private val executorService = Executors.newFixedThreadPool(4)
+        val executorService = Executors.newFixedThreadPool(4)!!
 
+        @Volatile
         private var INSTANCE: AppDataBase? = null
 
         private fun callback(context: Context): Callback {
@@ -44,25 +46,25 @@ abstract class AppDataBase : RoomDatabase() {
 
                         val travels =
                             gson.fromJson(travelJson, listTypeTravel) as MutableList<Travel>
-                        val contents = gson.fromJson(contentJson,listTypeContent) as MutableList<Content>
-                        val images = gson.fromJson(imageJson,listTypeImage) as MutableList<ImageTravel>
+                        val contents =
+                            gson.fromJson(contentJson, listTypeContent) as MutableList<Content>
+                        val images =
+                            gson.fromJson(imageJson, listTypeImage) as MutableList<ImageTravel>
 
-                        val daoTravel = INSTANCE?.travelDao
-                        daoTravel?.deleteAll()
-                        val contentDao = INSTANCE?.contentDao
-                        contentDao?.deleteAll()
-                        val imageDao = INSTANCE?.imageDao
-                        imageDao?.deleteAll()
+                        val daoTravel = getDataBase(context).travelDao
+                        val contentDao = getDataBase(context).contentDao
+                        val imageDao = getDataBase(context).imageDao
 
                         for (travel in travels) {
-                            daoTravel?.insert(travel)
+                            daoTravel.insert(travel)
                         }
-                        for (content in contents){
-                            contentDao?.insert(content)
+                        for (content in contents) {
+                            contentDao.insert(content)
                         }
-                        for (image in images){
-                            imageDao?.insert(image)
+                        for (image in images) {
+                            imageDao.insert(image)
                         }
+                        Log.d("TAG", "onOpen: alo")
                     }
                 }
             }

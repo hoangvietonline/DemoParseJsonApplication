@@ -1,5 +1,6 @@
 package com.hv.demoparsejsonapplication.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -13,4 +14,7 @@ interface ContentDao {
 
     @Query("DELETE FROM content")
     fun deleteAll()
+
+    @Query("SELECT DISTINCT type FROM content")
+    fun getAllTypePlace() : LiveData<List<String>>
 }
